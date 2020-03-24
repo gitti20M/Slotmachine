@@ -14,6 +14,7 @@ public class Reel {
   static List<icon> iconsAfterSpinning = new ArrayList<>();
 
   private final Random RANDOM = new Random();
+  private List<Symbol> RANDOM_SYMBOLS = new ArrayList<>();
   private List<Symbol> SYMBOLS = new ArrayList<>(Arrays.asList(
       new Symbol("image/bell.png", 9, icon.BELL),
       new Symbol("image/cherry.png", 7, icon.CHERRY),
@@ -34,13 +35,54 @@ public class Reel {
 
   public Reel(int id) {
     this.currentImageLabel.setId(String.valueOf(id));
+    this.createRandomReels();
     this.setRandomImage();
   }
 
+  public final void clearRandomReels() {
+    this.RANDOM_SYMBOLS.clear();
+  }
+
+  public final void createRandomReels() {
+    for (Symbol symbol : SYMBOLS) {
+      switch (symbol.getID()) {
+        case BELL:
+          this.setRandomSymbolsToList(this.calcRandomNumber(), 0);
+          break;
+        case CHERRY:
+          this.setRandomSymbolsToList(this.calcRandomNumber(), 1);
+          break;
+        case LEMON:
+          this.setRandomSymbolsToList(this.calcRandomNumber(), 2);
+          break;
+        case PLUM:
+          this.setRandomSymbolsToList(this.calcRandomNumber(), 3);
+          break;
+        case REDSEVEN:
+          this.setRandomSymbolsToList(this.calcRandomNumber(), 4);
+          break;
+        case WATERMELON:
+          this.setRandomSymbolsToList(this.calcRandomNumber(), 5);
+          break;
+      }
+    }
+  }
+
+  private int calcRandomNumber() {
+    return (int) (Math.random() * 10);
+  }
+
+  private void setRandomSymbolsToList(int amount, int index) {
+    while (amount >= 0) {
+      this.RANDOM_SYMBOLS.add(this.SYMBOLS.get(index));
+      amount--;
+    }
+  }
+
   public final void setRandomImage() {
-    int index = this.RANDOM.nextInt(this.SYMBOLS.size());
-    Symbol symbol = this.SYMBOLS.get(index);
-    ImageView newImage = this.SYMBOLS.get(index).getView();
+    int index = this.RANDOM.nextInt(this.RANDOM_SYMBOLS.size());
+    Symbol symbol = this.RANDOM_SYMBOLS.get(index);
+    ImageView newImage = this.RANDOM_SYMBOLS.get(index).getView();
     newImage.setId(symbol.getID().toString());
     this.currentImageLabel.setGraphic(newImage);
   }

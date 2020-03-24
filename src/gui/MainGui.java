@@ -24,7 +24,7 @@ public class MainGui extends Layout {
   public static boolean isApplicationRunning = false;
 
   private final Reel[] REELS = {new Reel(1), new Reel(2), new Reel(3)};
-  private final GameCounter GAME_COUNTER = new GameCounter(new HBox(), new Label(), this.mainStackPane);
+  private final GameCounter GAME_COUNTER = new GameCounter(new HBox(), new Label(), this.REELS ,this.mainStackPane);
   private final WonScore WON_SCORE = new WonScore(new HBox(), new Label());
   private final  Score SCORE = new Score(this.WON_SCORE);
   private final Controller CONTROLLER = new Controller();

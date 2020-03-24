@@ -21,6 +21,7 @@ import java.util.TimerTask;
 public class GameEnded {
   private GameCounter gameCounter;
   private MediaPlayer mediaPlayer = null;
+  private Reel[] reels = null;
 
   public final void setGameCounter(GameCounter gameCounter) {
     this.gameCounter = gameCounter;
@@ -53,6 +54,7 @@ public class GameEnded {
       @Override
       public void run() {
         Platform.runLater(() -> {
+          clearRandomReels();
           MainGui.hBoxReels.setVisible(true);
           layout.getChildren().remove(hBox);
           scoreInstance.scoreLabel.setText("0");
@@ -67,7 +69,16 @@ public class GameEnded {
     };
   }
 
-  void createGameEnded(Score scoreInstance, StackPane layout) {
+  private void clearRandomReels() {
+    System.out.println(reels.length);
+    for (Reel reel : reels) {
+      reel.clearRandomReels();
+      reel.createRandomReels();
+    }
+  }
+
+  void createGameEnded(Score scoreInstance, StackPane layout, Reel[] reels) {
+    this.reels = reels;
     this.preparePlayLoseMedia();
     MainGui.hBoxReels.setVisible(false);
     HBox hBox = new HBox();

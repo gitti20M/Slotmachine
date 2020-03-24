@@ -14,10 +14,12 @@ public class GameCounter extends GameEnded {
   private Label counterAmountLabel;
   private Score scoreInstance;
   private StackPane layout;
+  private Reel[] reels;
 
-  public GameCounter(HBox counterBox, Label counterAmountLabel, StackPane pane) {
+  public GameCounter(HBox counterBox, Label counterAmountLabel, Reel[] reels, StackPane pane) {
     this.counterBox = counterBox;
     this.counterAmountLabel = counterAmountLabel;
+    this.reels = reels;
     this.layout = pane;
   }
 
@@ -38,7 +40,7 @@ public class GameCounter extends GameEnded {
 
   public final void setValueToGameCounter(int value, boolean plusOrMinus) {
     if (value == 0 && !plusOrMinus) {
-      createGameEnded(scoreInstance, layout);
+      createGameEnded(scoreInstance, layout, this.reels);
     } else {
       if (gameCounter >= 0) {
         if (plusOrMinus) {

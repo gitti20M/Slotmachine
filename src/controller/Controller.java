@@ -113,7 +113,6 @@ public class Controller implements IBanditInputhandler {
 
   @Override
   public void setRotoryEncoderPosition(int value) {
-
   }
 
   @Override
@@ -123,12 +122,10 @@ public class Controller implements IBanditInputhandler {
 
   @Override
   public void pushCoins(int count) {
-
   }
 
   @Override
   public void setLightActive(int number, boolean state) {
-
   }
 
   @Override
