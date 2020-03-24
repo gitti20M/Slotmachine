@@ -96,7 +96,7 @@ public class ScoreEffect {
     box.getChildren().remove(fadeTransition);
     for (Node node : box.getChildren()) {
       Label label = (Label) node;
-      label.setFont(Font.font("impact", 55));
+      label.setFont(Font.font("impact", 60));
       label.setEffect(null);
     }
   }

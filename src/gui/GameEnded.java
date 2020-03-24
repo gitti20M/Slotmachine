@@ -58,7 +58,7 @@ public class GameEnded {
           MainGui.hBoxReels.setVisible(true);
           layout.getChildren().remove(hBox);
           scoreInstance.scoreLabel.setText("0");
-          scoreInstance.scoreLabel.setFont(Font.font("impact", 55));
+          scoreInstance.scoreLabel.setFont(Font.font("impact", 60));
           scoreInstance.setScore(0);
           gameCounter.gameCounter = 5;
           gameCounter.setValueToAmountLabel(String.valueOf(gameCounter.gameCounter));
@@ -70,7 +70,6 @@ public class GameEnded {
   }
 
   private void clearRandomReels() {
-    System.out.println(reels.length);
     for (Reel reel : reels) {
       reel.clearRandomReels();
       reel.createRandomReels();

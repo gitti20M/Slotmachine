@@ -24,7 +24,7 @@ public class Score extends ScoreEffect {
 
   public final HBox createScore(String labelText, Pos position) {
     this.scoreLabel.setText(labelText);
-    this.scoreLabel.setFont(Font.font("impact", 55));
+    this.scoreLabel.setFont(Font.font("impact", 60));
     this.scoreLabel.setTextFill(Color.YELLOW);
     this.hBox.setAlignment(position);
     this.hBox.setSpacing(10);

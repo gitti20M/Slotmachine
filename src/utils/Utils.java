@@ -75,7 +75,7 @@ public class Utils {
 
   public static void createBackgroundMedia(String resource) {
     URL mediaResource = Utils.class.getResource(resource);
-    Media media = new Media(mediaResource.toString());
+    Media media = new Media(String.valueOf(mediaResource));
     mainMediaPlayer = new MediaPlayer(media);
     mainMediaPlayer.setOnEndOfMedia(() -> {
       mainMediaPlayer.seek(Duration.minutes(0));
