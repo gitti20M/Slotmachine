@@ -90,7 +90,7 @@ public class Controller implements IBanditInputhandler {
         for (Reel reel : reels) {
           reel.checkIcon(reel.currentImageLabel);
         }
-        scoreInstance.scoreLabel.setText(String.valueOf(scoreInstance.prepareCalcAndClacScore(gameCounter)));
+        scoreInstance.scoreLabel.setText(String.valueOf(scoreInstance.prepareCalc(gameCounter)));
         counter = 0;
       }
     });

@@ -11,15 +11,14 @@ import utils.Utils;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Score extends ScoreEffect{
+public class Score extends ScoreEffect {
   public Label scoreLabel = new Label();
   public HBox hBox = new HBox();
 
-  private Map<String, Integer> amountIcons = new HashMap<>();
   private int score = 0;
   private WonScore wonScore;
 
-  public Score( WonScore wonScore) {
+  public Score(WonScore wonScore) {
     this.wonScore = wonScore;
   }
 
@@ -38,50 +37,50 @@ public class Score extends ScoreEffect{
     score = value;
   }
 
-  public final int prepareCalcAndClacScore(GameCounter gameCounter) {
+  public final int prepareCalc(GameCounter gameCounter) {
     int bellAmount = 0, cherryAmout = 0, lemonAmount = 0, plumAmount = 0, redsevenAmount = 0, watermelonAmount = 0;
     int i = 0;
+    Map<String, Integer> amountIcon = new HashMap<>();
     Map<String, Integer> valueIcon = new HashMap<>();
 
     for (Reel.icon icon : Reel.iconsAfterSpinning) {
       switch (icon) {
         case BELL:
           bellAmount += 1;
-          amountIcons.put("bell", bellAmount);
+          amountIcon.put("bell", bellAmount);
           valueIcon.put("bell", Reel.iconsAfterSpinningValues.get(i));
           break;
         case CHERRY:
           cherryAmout += 1;
-          amountIcons.put("cherry", cherryAmout);
+          amountIcon.put("cherry", cherryAmout);
           valueIcon.put("cherry", Reel.iconsAfterSpinningValues.get(i));
           break;
         case LEMON:
           lemonAmount += 1;
-          amountIcons.put("lemon", lemonAmount);
+          amountIcon.put("lemon", lemonAmount);
           valueIcon.put("lemon", Reel.iconsAfterSpinningValues.get(i));
           break;
         case PLUM:
           plumAmount += 1;
-          amountIcons.put("plum", plumAmount);
+          amountIcon.put("plum", plumAmount);
           valueIcon.put("plum", Reel.iconsAfterSpinningValues.get(i));
           break;
         case REDSEVEN:
           redsevenAmount += 1;
-          amountIcons.put("redseven", redsevenAmount);
+          amountIcon.put("redseven", redsevenAmount);
           valueIcon.put("redseven", Reel.iconsAfterSpinningValues.get(i));
           break;
         case WATERMELON:
           watermelonAmount += 1;
-          amountIcons.put("watermelon", watermelonAmount);
+          amountIcon.put("watermelon", watermelonAmount);
           valueIcon.put("watermelon", Reel.iconsAfterSpinningValues.get(i));
           break;
       }
       i++;
     }
     i = 0;
-
     for (String key : valueIcon.keySet()) {
-      switch (amountIcons.get(key)) {
+      switch (amountIcon.get(key)) {
         case 1:
           i++;
           if (i == 3) {
@@ -129,8 +128,8 @@ public class Score extends ScoreEffect{
   private void setValueToWonScore(int won) {
     this.score += won;
     Label label = wonScore.getWonScoreLabel();
-    label.setText("+"+ " " + won);
+    label.setText("+" + " " + won);
     wonScore.isVisible = true;
-    wonScore.getWonScoreHbox().setVisible(wonScore.isVisible);
+    wonScore.getWonScoreHbox().setVisible(true);
   }
 }

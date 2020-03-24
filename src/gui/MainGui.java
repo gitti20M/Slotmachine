@@ -23,7 +23,7 @@ public class MainGui extends Layout {
   public static HBox hBoxReels = null;
   public static boolean isApplicationRunning = false;
 
-  private final Reel[] reels = {new Reel(1), new Reel(2), new Reel(3)};
+  private final Reel[] REELS = {new Reel(1), new Reel(2), new Reel(3)};
   private final GameCounter GAME_COUNTER = new GameCounter(new HBox(), new Label(), this.mainStackPane);
   private final WonScore WON_SCORE = new WonScore(new HBox(), new Label());
   private final  Score SCORE = new Score(this.WON_SCORE);
@@ -49,7 +49,7 @@ public class MainGui extends Layout {
     hBoxReels = new HBox();
     hBoxReels.setSpacing(this.screenWidth / 15);
     hBoxReels.setAlignment(Pos.CENTER);
-    for (Reel reel : this.reels) {
+    for (Reel reel : this.REELS) {
       StackPane imageContainer = new StackPane();
       imageContainer.getChildren().add(reel.currentImageLabel);
       imageContainer.setBackground(Utils.createBackgroundImage("image/slotBackground.png", null));
@@ -67,12 +67,12 @@ public class MainGui extends Layout {
         isApplicationRunning = true;
         if (this.WON_SCORE.isVisible) {
           this.WON_SCORE.isVisible = false;
-          this.WON_SCORE.getWonScoreHbox().setVisible(this.WON_SCORE.isVisible);
+          this.WON_SCORE.getWonScoreHbox().setVisible(false);
         }
         Utils.mainMediaPlayer.pause();
         this.GAME_COUNTER.setValueToGameCounter(1, false);
         this.GAME_COUNTER.setValueToAmountLabel(String.valueOf(this.GAME_COUNTER.getValueFromGameCounter()));
-        this.CONTROLLER.spinReel(this.reels, this.SCORE, this.GAME_COUNTER);
+        this.CONTROLLER.spinReel(this.REELS, this.SCORE, this.GAME_COUNTER);
       }
     });
     button.setText("Ich bin ein Knopf");
