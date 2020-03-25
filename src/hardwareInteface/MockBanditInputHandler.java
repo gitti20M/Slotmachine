@@ -1,6 +1,7 @@
-package slotmachine.hardwareInteface;
+package hardwareInteface;
+import slotmachine.hardwareInteface.IBanditInputhandler;
 
-public class MockBanditInputHandler implements IBanditInputhandler{
+public class MockBanditInputHandler implements IBanditInputhandler {
   protected boolean mButtonState;
   protected int mRotoryEncoderState;
   protected int mCoinsToDrop;
