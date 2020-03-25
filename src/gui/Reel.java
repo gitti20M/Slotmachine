@@ -44,7 +44,7 @@ public class Reel {
   }
 
   public final void createRandomReels() {
-    for (Symbol symbol : SYMBOLS) {
+    for (Symbol symbol : this.SYMBOLS) {
       switch (symbol.getID()) {
         case BELL:
           this.setRandomSymbolsToList(this.calcRandomNumber(), 0);
@@ -68,12 +68,10 @@ public class Reel {
     }
   }
 
-  private int calcRandomNumber() {
-    return (int) (Math.random() * 10);
-  }
+  private int calcRandomNumber() {return this.RANDOM.nextInt(10 - 1 + 1) + 1;}
 
   private void setRandomSymbolsToList(int amount, int index) {
-    while (amount >= 0) {
+    while (amount > 0) {
       this.RANDOM_SYMBOLS.add(this.SYMBOLS.get(index));
       amount--;
     }

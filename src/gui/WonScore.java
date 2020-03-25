@@ -20,7 +20,7 @@ public class WonScore {
   }
 
   private void createWonScore() {
-    this.labelWonScore.setFont(Font.font("impact", 55));
+    this.labelWonScore.setFont(Font.font("impact", 60));
     this.labelWonScore.setTextFill(Color.YELLOW);
     this.hBoxWonSocre.getChildren().add(this.labelWonScore);
     this.hBoxWonSocre.setAlignment(Pos.BOTTOM_CENTER);
